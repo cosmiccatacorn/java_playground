@@ -18,7 +18,8 @@ public class numGuesserGame {
                     System.out.println("Ingrese un número entero entre o y 101");
                     int guess = userInput.nextInt();
                     if (guess < 0 || guess > 100) {
-                        throw new ArithmeticException("Number out of range! Enter an integer betweenn 0 and 100");
+                        System.out.println("Number out of range! Enter an integer betweenn 0 and 100");
+                        throw new ArithmeticException();
                     }
                     if (guess > randomNumber) {
                         System.out.println("Es un número menor! Inténtalo de nuevo");
