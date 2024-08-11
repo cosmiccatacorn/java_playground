@@ -1,53 +1,37 @@
 import java.util.Scanner;
+//import java.lang.reflect.Field;
 
 public class Main {
-    public static void main(String[] args){
-        Scanner userInput =  new Scanner(System.in);
-        String parentesco;
-        String nombre;
-        int edad;
-        String sexo;
-        String deporteFavorito;
-        System.out.print("Ingrese el número de personas en su núcleo familiar: ");
-        int n = userInput.nextInt();
-        userInput.nextLine();
-
-        for(int i=0; i<(n-1); i++){
-            System.out.print("Ingrese parentesco: ");
-            parentesco = userInput.nextLine();
-            System.out.print("Ingrese nombre: ");
-            nombre = userInput.nextLine();
-            System.out.print("Ingrese edad: ");
-            edad = userInput.nextInt();
-            System.out.print("Ingrese sexo: ");
-            userInput.nextLine();
-            sexo = userInput.nextLine();
-            System.out.print("Ingrese deporte favorito: ");
-            deporteFavorito = userInput.nextLine();
-
-            System.out.println("Mi "+ parentesco+ " se llama " + nombre +". Su sexo es " + sexo + " y tiene " + edad + " años. Su deporte favorito es " + deporteFavorito);
-        }
+    public static void main(String [] args){
+        Scanner lectura = new Scanner(System.in);
 
 
+        System.out.print("Ingrese el nombre: ");
+        String nombre = lectura.nextLine();
+        System.out.print("Ingrese la edad: ");
+        int edad = lectura.nextInt();
+        System.out.print("Ingrese el código: ");
+        int codigo = lectura.nextInt();
+        System.out.println("Ingrese las notas seguidas de un enter:");
+        System.out.print("Primer corte: ");
+        double nota1 = lectura.nextDouble();
+        System.out.print("Segundo corte: ");
+        double nota2 = lectura.nextDouble();
+        System.out.print("Tercer corte: ");
+        double nota3 = lectura.nextDouble();
+        System.out.print("Ingrese año de graduación: ");
+        int gradYear = lectura.nextInt();
 
-        System.out.println("Hora de completar sus datos!");
-        System.out.print("Hasta qué año le gustaría vivir? ");
-        int goal_year = userInput.nextInt();
-        userInput.nextLine();
-        System.out.print("Ingrese su nombre: ");
-        nombre = userInput.nextLine();
-        System.out.print("Ingrese su edad: ");
-        edad = userInput.nextInt();
-        userInput.nextLine();
-        System.out.print("Ingrese su sexo: ");
-        sexo = userInput.nextLine();
-        System.out.print("Ingrese su deporte favorito: ");
-        deporteFavorito = userInput.nextLine();
+        Estudiante estudiante = new Estudiante(nombre, edad, codigo, nota1, nota2, nota3, gradYear);
 
-        int birth_year = 2024- edad;
+        System.out.print("La nota final es: " + (nota1*0.3 + nota2*0.3 + nota3*0.4));
 
-        System.out.println("Mi nombre es "+ nombre + ", tengo "+ edad + " años y mi sexo es " + sexo + ". Mi deporte favorito es " + deporteFavorito + ". ");
-        System.out.println("Me gustaría vivir hasta " + goal_year + ", lo que quiere decir que viviré hasta los " + (goal_year-birth_year) + " años y me quedan por vivir " + (goal_year - 2024));
+        System.out.println("La nota final de " + estudiante.nombre + " es " + estudiante.notaFinal());
+        System.out.println(estudiante.nombre + " ha " + estudiante.estado() + " la asignatura");
+        //Estudiante jaco = new Estudiante("Jacobo Sandoval", 12, 15180001, 2028);
+        //Estudiante loren = new Estudiante("Loren Díaz", 16, 15180016, 2024);
+
+        System.out.println("Edad con la que se gradúa el estudiante " + estudiante.nombre +": "+ estudiante.findGradAge());
 
     }
 }
